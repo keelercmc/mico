@@ -22,7 +22,8 @@ exports.up = function(knex) {
       tbl.integer('user_id')
         .unsigned()
         .notNullable()
-        .references('users.id');
+        .references('id')
+        .inTable('users');
     })
     .createTable('cards', tbl => {
       tbl.increments('id');
@@ -32,7 +33,8 @@ exports.up = function(knex) {
       tbl.integer('deck_id')
         .unsigned()
         .notNullable()
-        .references('decks.id');
+        .references('id')
+        .inTable('decks');
     })
 };
 

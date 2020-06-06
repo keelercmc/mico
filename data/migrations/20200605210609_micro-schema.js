@@ -32,7 +32,7 @@ exports.up = function(knex) {
       tbl.integer('deck_id')
         .unsigned()
         .notNullable()
-        .references('deck.id');
+        .references('decks.id');
     })
 };
 

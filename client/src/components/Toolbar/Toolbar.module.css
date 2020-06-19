@@ -1,0 +1,17 @@
+.Toolbar {    
+    align-items: center;
+    background-color: #d3d3d3;
+    box-sizing: border-box;
+    display: inline-flex;
+    height: 50px;
+    padding: 0 4rem;
+    width: 50%;
+}
+
+.Home {
+    justify-content: flex-start;
+}
+
+.Login {
+    justify-content: flex-end;
+}

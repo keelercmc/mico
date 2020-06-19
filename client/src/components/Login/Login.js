@@ -28,7 +28,7 @@ class Login extends Component {
                     handleSubmit,
                     } = props;
                     return (
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} autocomplete='off'>
                             <div className={classes.Inputs}>
                                 <input
                                     id='username'

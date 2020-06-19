@@ -23,18 +23,23 @@ exports.up = function(knex) {
         .unsigned()
         .notNullable()
         .references('id')
-        .inTable('users');
+        .inTable('users')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
     })
     .createTable('cards', tbl => {
       tbl.increments('id');
-      tbl.string('JSON_front')
+      tbl.json('JSON_front')
         .notNullable();
-      tbl.string('JSON_back');
+      tbl.json('JSON_back')
+        .notNullable();
       tbl.integer('deck_id')
         .unsigned()
         .notNullable()
         .references('id')
-        .inTable('decks');
+        .inTable('decks')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
     })
 };
 

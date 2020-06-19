@@ -17,3 +17,20 @@ function findBy(filter) {
 function findById(id) {
   return db("decks").where({ id }).first();
 }
+
+function addPhoto(photoData){
+  return db('photos')
+    .insert(photoData);
+}
+
+function update(changes, id){
+  return db('decks')
+    .where({id})
+    .update(changes);
+}
+
+function remove(id){
+  return db('decks')
+  .delete()
+  .where({id});
+}

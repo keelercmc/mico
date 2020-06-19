@@ -1,13 +1,17 @@
-const db = require("../database/connection.js");
+const db = require('../data/db-config.js');
 
 module.exports = {
-  find,
-  findBy,
-  findById,
-};
+  add,
+  update,
+  remove,
+  findStories,
+  findById
+}
 
-function find() {
-  return db("users").select("id", "username").orderBy("id");
+
+function findDecks (id){
+  return db('decks')
+    .where({user_id: id});
 }
 
 function findBy(filter) {
@@ -15,5 +19,36 @@ function findBy(filter) {
 }
 
 function findById(id) {
-  return db("users").where({ id }).first();
+  return db('users')
+    .where({id})
+    .first();
+}
+
+function addDeck(deckInfo){
+  return db('decks')
+    .insert(deckInfo);
+}
+
+async function add(user) {
+  try {
+    const [id] = await db("users").insert(user, "id");
+
+    return findById(id);
+  }
+  catch (error) {
+    throw error;
+  }
+}
+
+function update(changes, id){
+  return db('users')
+    .where({id})
+    .update(changes);
+
+}
+
+function remove(id){
+  return db('users')
+  .delete()
+  .where({id});
 }

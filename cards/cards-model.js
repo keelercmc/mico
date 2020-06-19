@@ -1,19 +1,30 @@
 const db = require("../database/connection.js");
 
 module.exports = {
-  find,
   findBy,
   findById,
+  update,
+  remove
 };
-
-function find() {
-  return db("cards").select("*").orderBy("deck_id");
-}
 
 function findBy(filter) {
   return db("cards").where(filter).orderBy("id");
 }
 
 function findById(id) {
-  return db("cards").where({ id }).first();
+  return db("photos").where({ id }).first();
+}
+
+function update(changes, id){
+  return db('photos')
+    .where({id})
+    .update(changes);
+
+}
+
+
+function remove(id){
+  return db('photos')
+  .delete()
+  .where({id});
 }
